@@ -593,3 +593,307 @@ section p {
     border-radius:15px;
     box-shadow:0 8px 20px rgba(0,0,0,.1);
 }
+/* ===== SECTION FILTRES ===== */
+.filtres {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.filtre-btn {
+  padding: 0.6rem 1.4rem;
+  border: 2px solid var(--couleur-primaire);
+  background: transparent;
+  color: var(--couleur-primaire);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-corps);
+  transition: all 0.3s ease; /* transition obligatoire sur éléments interactifs */
+}
+
+.filtre-btn:hover {
+  background: var(--couleur-primaire);
+  color: #fff;
+}
+
+/* Bouton actif = celui sélectionné, géré par le JS qui ajoute cette classe */
+.filtre-btn.active {
+  background: var(--couleur-primaire);
+  color: #fff;
+}
+
+/* ===== GRILLE D'INTERVENANTS ===== */
+.grille-intervenants {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes desktop */
+  gap: 2rem;
+  padding: 2rem 5%;
+}
+
+.carte-intervenant {
+  background: var(--couleur-fond-carte);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* pour le hover */
+}
+
+/* Effet hover demandé : ombre + translation */
+.carte-intervenant:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.carte-intervenant img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* évite les images déformées */
+}
+
+.carte-intervenant h3 {
+  margin-top: 1rem;
+  font-family: var(--font-titre);
+}
+
+.carte-intervenant .specialite {
+  color: var(--couleur-texte-secondaire);
+  font-size: 0.9rem;
+}
+
+.carte-intervenant .pays {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Classe que le JS ajoutera pour masquer une carte filtrée */
+.carte-intervenant.masquee {
+  display: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .grille-intervenants {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes tablette */
+  }
+}
+
+@media (max-width: 375px) {
+  .grille-intervenants {
+    grid-template-columns: 1fr; /* 1 colonne mobile */
+  }
+}
+/* ===== FOOTER ===== */
+footer {
+  background: var(--couleur-fond-footer);
+  color: var(--couleur-texte-footer);
+  margin-top: 4rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 5%;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h3 {
+  font-family: var(--font-titre);
+  margin-bottom: 1rem;
+  color: var(--couleur-primaire);
+}
+
+.footer-col p {
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Navigation du footer en colonne */
+.footer-col nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-col nav a {
+  color: var(--couleur-texte-footer);
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-col nav a:hover {
+  color: var(--couleur-primaire);
+  padding-left: 5px;
+}
+
+/* Réseaux sociaux */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  font-size: 1.4rem;
+  color: var(--couleur-texte-footer);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--couleur-primaire);
+  transform: scale(1.2) translateY(-3px);
+}
+
+/* Copyright */
+.footer-copyright {
+  text-align: center;
+  padding: 1.2rem 0;
+  font-size: 0.85rem;
+  border-top: 1px solid var(--couleur-bordure);
+}
+
+/* Bouton retour en haut */
+#btn-retour-haut {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: var(--couleur-primaire);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none; /* le JS l'affiche après 300px de scroll */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+#btn-retour-haut:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-col nav {
+    align-items: center;
+  }
+}
+footer {
+  background: var(--background-color);
+  color: var(--gray-color);
+  margin-top: 4rem;
+}
+/* ===== SECTION CTA (séparation avant footer) ===== */
+.cta-intervenants {
+  text-align: center;
+  padding: 4rem 5%;
+  background: var(--couleur-fond-alt); /* légère variation de fond pour la séparation visuelle */
+  margin-top: 3rem;
+}
+
+.cta-intervenants h2 {
+  font-family: var(--font-titre);
+  margin-bottom: 1rem;
+}
+
+.cta-intervenants p {
+  margin-bottom: 2rem;
+  color: var(--couleur-texte-secondaire);
+}
+
+.cta-boutons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primaire {
+  background: var(--couleur-primaire);
+  color: #fff;
+}
+
+.btn-secondaire {
+  background: transparent;
+  border: 2px solid var(--couleur-primaire);
+  color: var(--couleur-primaire);
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.hero-interne {
+  position: relative;
+  background: url('../images/hero intervenant.jpeg') center/cover no-repeat;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.hero-interne h1 {
+  font-family: var(--font-titre);
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.hero-sous-titre {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  color: #e0e0e0;
+}
+
+.fil-ariane {
+  font-size: 0.9rem;
+}
+
+.fil-ariane a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.fil-ariane a:hover {
+  border-color: #fff;
+}
+
+.fil-ariane span[aria-current="page"] {
+  color: var(--couleur-primaire);
+  font-weight: bold;
+}
