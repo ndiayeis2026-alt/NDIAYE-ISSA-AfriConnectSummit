@@ -1,4 +1,4 @@
-const toggleBtn = document.querySelector('???'); 
+const toggle = document.getElementById("theme-toggle");
 const htmlElement = document.documentElement;
 
 // On lit ce qui est stocké dans le navigateur
@@ -61,38 +61,20 @@ if (elementAnnee) {
 const btnRetourHaut = document.getElementById('btn-retour-haut');
 
 if (btnRetourHaut) {
-
-  // 1. On surveille le scroll de la page pour afficher/masquer le bouton
   window.addEventListener('scroll', function () {
     if (window.scrollY > 300) {
-      // Après 300px de scroll, on affiche le bouton
       btnRetourHaut.style.display = 'flex';
     } else {
-      // Avant 300px, on le cache
       btnRetourHaut.style.display = 'none';
     }
   });
-
-  // 2. Au clic, on remonte en douceur en haut de la page
-  btnRetourHaut.addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
 }
 
-toggleBtn.addEventListener('click', () => {
-  // 1. Vérifier l'état actuel : est-ce que data-theme vaut déjà "dark" ?
-  const isDark = htmlElement.getAttribute('data-theme') === 'dark';
 
-  // 2. Inverser l'état
-  if (isDark) {
-    // que fait-on ici ?
-  } else {
-    // et ici ?
-  }
-
-  // 3. Sauvegarder le nouveau choix dans localStorage
-});
+if (toggle) {
+  toggle.addEventListener("click", () => {
+    const currentTheme = htmlElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    htmlElement.setAttribute("data-theme", currentTheme);
+    localStorage.setItem("theme", currentTheme);
+  });
+}
