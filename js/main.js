@@ -1,3 +1,14 @@
+const toggleBtn = document.querySelector('???'); 
+const htmlElement = document.documentElement;
+
+// On lit ce qui est stocké dans le navigateur
+const savedTheme = localStorage.getItem('theme');
+
+// Si une valeur existe et qu'elle vaut "dark", on l'applique
+if (savedTheme === 'dark') {
+  htmlElement.setAttribute('data-theme', 'dark');
+}
+
 // ===============================
 // MENU HAMBURGER MOBILE
 // ===============================
@@ -71,3 +82,17 @@ if (btnRetourHaut) {
   });
 
 }
+
+toggleBtn.addEventListener('click', () => {
+  // 1. Vérifier l'état actuel : est-ce que data-theme vaut déjà "dark" ?
+  const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+
+  // 2. Inverser l'état
+  if (isDark) {
+    // que fait-on ici ?
+  } else {
+    // et ici ?
+  }
+
+  // 3. Sauvegarder le nouveau choix dans localStorage
+});
